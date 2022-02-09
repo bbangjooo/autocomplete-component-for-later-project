@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": ""
+    "dev": "nodemon --exec babel-node server.js",
+    "migrate": "npx prisma migrate dev",
+    "studio": "npx prisma studio"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,28 @@
   "bugs": {
     "url": "https://github.com/bbangjooo/autocomplete-component-for-later-project/issues"
   },
-  "homepage": "https://github.com/bbangjooo/autocomplete-component-for-later-project#readme"
+  "homepage": "https://github.com/bbangjooo/autocomplete-component-for-later-project#readme",
+  "dependencies": {
+    "@graphql-tools/load-files": "^6.5.3",
+    "@graphql-tools/merge": "^8.2.1",
+    "@graphql-tools/schema": "^8.3.1",
+    "@prisma/client": "^3.8.1",
+    "apollo-server-core": "^3.6.2",
+    "apollo-server-express": "^3.6.2",
+    "bcrypt": "^5.0.1",
+    "body-parser-graphql": "^1.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "graphql": "^16.2.0",
+    "graphql-tools": "^8.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "nodemon": "^2.0.15",
+    "prisma": "^3.8.1"
+  }
 }

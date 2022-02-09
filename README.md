@@ -1,2 +1,1 @@
-# Autocomplete componenet Backend
-
+Blog Back-end(Express + GraphQL + Prisma + Postgresql)
