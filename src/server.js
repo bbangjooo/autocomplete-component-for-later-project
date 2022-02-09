@@ -18,7 +18,7 @@ async function startServer(schema) {
         name: "session",
         secret: process.env.SECRET,
         cookie: {
-            sameSite: true,
+            sameSite: 'none',
             httpOnly: true,
             maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
         },
