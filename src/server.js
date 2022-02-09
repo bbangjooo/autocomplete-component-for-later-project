@@ -13,6 +13,7 @@ async function startServer(schema) {
     }
     const app = express();
     app.disable('x-powered-by');
+    app.set('trust-proxy', 1);
     // Middleware setting
     app.use(session({
         name: "session",
