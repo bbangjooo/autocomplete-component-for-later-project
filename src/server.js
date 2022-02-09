@@ -4,7 +4,7 @@ import session from "express-session";
 import { ApolloServer } from "apollo-server-express";
 import schema from "./schema";
 import http from "http";
-import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
+import { ApolloServerPluginDrainHttpServer, ApolloServerPluginLandingPageProductionDefault } from "apollo-server-core";
 async function startServer(schema) {
     const PORT = process.env.PORT ?? 4000;
     const corsOptions = {
@@ -30,14 +30,18 @@ async function startServer(schema) {
     const server = new ApolloServer({
         schema,
         context: ({req}) => ({req}),
-        plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+        plugins: [
+            ApolloServerPluginDrainHttpServer({ httpServer }),
+            ApolloServerPluginLandingPageProductionDefault({ footer: true })
+        ],
+
     });
     await server.start();
 
     server.applyMiddleware({
         app,
         path: '/graphql',
-        cors: corsOptions
+        cors: corsOptions,
     });
 
     await new Promise(resolve => httpServer.listen({port: PORT}, resolve));
