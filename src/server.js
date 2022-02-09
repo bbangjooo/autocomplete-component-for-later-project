@@ -8,7 +8,7 @@ import { ApolloServerPluginDrainHttpServer, ApolloServerPluginLandingPageProduct
 async function startServer(schema) {
     const PORT = process.env.PORT ?? 4000;
     const corsOptions = {
-        origin: 'http://localhost:3000',
+        origin: /https?:\/\/blog.bbangjo.kr$/,
         credentials: true,
     }
 
