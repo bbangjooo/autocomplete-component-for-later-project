@@ -57,8 +57,21 @@ export default {
                     error
                 };
             }
-            
-            
+        },
+        deleteUser: async (_, { id }) => {
+            try {
+                const deleted = await client.user.delete({
+                    where: {
+                        id
+                    }
+                });
+                if (!deleted) {
+                    throw Error("Not Found");
+                }
+                return true;
+            } catch (error) {
+                return false;
+            }
         }     
     }
 }

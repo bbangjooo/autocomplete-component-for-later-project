@@ -23,6 +23,7 @@ export default gql`
     type Mutation {
         register(username: String!, password: String!, perm: Boolean): User
         login(username: String!, password: String!): LoginResult
+        deleteUser(id: Int!): Boolean
     }
 
 `;
