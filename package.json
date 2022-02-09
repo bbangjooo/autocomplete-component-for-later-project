@@ -31,6 +31,7 @@
     "apollo-server-express": "^3.6.2",
     "bcrypt": "^5.0.1",
     "body-parser-graphql": "^1.1.0",
+    "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",

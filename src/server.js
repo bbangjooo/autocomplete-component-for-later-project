@@ -1,6 +1,6 @@
 require('dotenv').config();
 import express from "express";
-import session from "express-session";
+import session from "cookie-session";
 import { ApolloServer } from "apollo-server-express";
 import schema from "./schema";
 import http from "http";
