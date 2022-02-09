@@ -17,11 +17,9 @@ async function startServer(schema) {
     app.use(session({
         name: "session",
         secret: process.env.SECRET,
-        cookie: {
-            sameSite: 'none',
-            httpOnly: true,
-            maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
-        },
+        sameSite: 'none',
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
         resave: false,
         saveUninitialized: false,
     }));
