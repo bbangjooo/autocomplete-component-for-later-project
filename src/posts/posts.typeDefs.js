@@ -10,7 +10,11 @@ export default gql`
         createdAt:   String!
         updatedAt:   String!
     }
-
+    type MutationResult {
+        success: Boolean!
+        id: Int
+        error: String
+    }
     type Query {
         getAllPosts: [Post]
         getPost(id: Int!): Post
@@ -18,7 +22,7 @@ export default gql`
     }
 
     type Mutation {
-        uploadPost(title: String!, content: String!, tag: String, writer: String): Post
-        deletePost(id: Int!): Post
+        uploadPost(title: String!, content: String!, tag: String, writer: String): MutationResult
+        deletePost(id: Int!): MutationResult
     }
 `;

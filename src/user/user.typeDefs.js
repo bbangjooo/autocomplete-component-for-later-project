@@ -9,13 +9,20 @@ export default gql`
         perm: Boolean
     }
 
+    type LoginResult {
+        success: Boolean!
+        token: String
+        error: String
+    }
+
     type Query {
         userExist(username: String!): Boolean
+        getUser(id: Int!): User
     }
 
     type Mutation {
         register(username: String!, password: String!, perm: Boolean): User
-        login(username: String!, password: String!): User
+        login(username: String!, password: String!): LoginResult
     }
 
 `;

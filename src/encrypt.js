@@ -1,7 +1,12 @@
 require('dotenv').config();
 import crypto from "crypto";
 
-export default function encryptPassword(password) {
+export function checkPassword(encrypted, password) {
+    return encryptPassword(password) === encrypted;
+}
+
+
+export function encryptPassword(password) {
     return crypto
     .createHash('sha256')
     .update(password + process.env.SECRET)

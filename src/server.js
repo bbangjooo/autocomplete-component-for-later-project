@@ -4,15 +4,15 @@ import session from "cookie-session";
 import { ApolloServer } from "apollo-server-express";
 import schema from "./schema";
 import http from "http";
-import { ApolloServerPluginDrainHttpServer, ApolloServerPluginLandingPageProductionDefault } from "apollo-server-core";
+import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
 async function startServer(schema) {
     const PORT = process.env.PORT ?? 4000;
     const corsOptions = {
-        origin: /https?:\/\/blog.bbangjo.kr$/,
+        origin: process.env.NODE_ENV === "production" ? /https?:\/\/blog.bbangjo.kr$/ : /http:\/\/localhost:(3|4)000/,
         credentials: true,
     }
-
     const app = express();
+    app.disable('x-powered-by');
     // Middleware setting
     app.use(session({
         name: "session",
@@ -31,8 +31,7 @@ async function startServer(schema) {
         schema,
         context: ({req}) => ({req}),
         plugins: [
-            ApolloServerPluginDrainHttpServer({ httpServer }),
-            ApolloServerPluginLandingPageProductionDefault({ footer: true })
+            ApolloServerPluginDrainHttpServer({ httpServer })
         ],
 
     });

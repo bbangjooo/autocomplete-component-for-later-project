@@ -1,5 +1,5 @@
 import client from "../client";
-import encryptPassword from "../encrypt";
+import { encryptPassword } from "../encrypt";
 export default {
     Mutation: {
         register: async (_, { username, password, perm }) => {
@@ -24,10 +24,10 @@ export default {
                 return error;
             }
         },
-        login: (_, { username, password }, { req }) => {
+        login: async (_, { username, password }, { req }) => {
             try {
                 const hashedPassword = encryptPassword(password);
-                const foundUser =  client.user.findFirst({
+                const foundUser = await client.user.findFirst({
                     where: {
                         AND: [
                             {
@@ -42,9 +42,20 @@ export default {
                 if (foundUser === null) {
                     throw Error("User not found :(");
                 }
-                return req.session.user = foundUser;
+                req.session.user = {
+                    id: foundUser.id, 
+                    username: foundUser.username, 
+                    perm: foundUser.perm
+                };
+                return {
+                    success: true,
+                    token: encryptPassword(foundUser.id)
+                };
             } catch (error) {
-                return error;
+                return {
+                    success: false,
+                    error
+                };
             }
             
             
