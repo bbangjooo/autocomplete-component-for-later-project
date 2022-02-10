@@ -19,6 +19,8 @@ async function startServer(schema) {
         name: "session",
         secret: process.env.SECRET,
         httpOnly: true,
+        sameSite: 'none',
+        secure: true,
         maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
         resave: false,
         saveUninitialized: false,
