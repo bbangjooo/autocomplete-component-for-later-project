@@ -8,7 +8,7 @@ import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
 async function startServer(schema) {
     const PORT = process.env.PORT ?? 4000;
     const corsOptions = {
-        origin: process.env.NODE_ENV === "production" ? /https?:\/\/blog.bbangjo.kr$/ : /http:\/\/localhost:(3|4)000/,
+        origin: /https?:\/\/blog.bbangjo.kr$/,// process.env.NODE_ENV === "production" ? /https?:\/\/blog.bbangjo.kr$/ : /http:\/\/localhost:(3|4)000/,
         credentials: true,
     }
     const app = express();
