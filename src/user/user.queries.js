@@ -1,5 +1,4 @@
 import client from "../client"
-import encryptPassword from "../encrypt"
 
 
 export default {

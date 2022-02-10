@@ -1,5 +1,5 @@
 import client from "../client";
-import { encryptPassword } from "../encrypt";
+import { encryptPassword } from "../utils";
 export default {
     Mutation: {
         register: async (_, { username, password, perm }) => {

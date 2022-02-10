@@ -24,5 +24,6 @@ export default gql`
     type Mutation {
         uploadPost(title: String!, content: String!, tag: String, writer: String): MutationResult
         deletePost(id: Int!): MutationResult
+        updatePost(id:Int!, title: String!, content: String!, tag: String, writer: String): MutationResult
     }
 `;
