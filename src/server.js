@@ -12,12 +12,14 @@ async function startServer(schema) {
         credentials: true,
     }
     const app = express();
+    app.set('trust proxy', 1);
     app.disable('x-powered-by');
     // Middleware setting
     app.use(session({
         name: "session",
         secret: process.env.SECRET,
         httpOnly: true,
+        sameSite: 'none',
         secure: true,
         maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
         resave: false,
