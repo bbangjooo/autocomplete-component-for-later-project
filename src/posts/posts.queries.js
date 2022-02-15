@@ -2,7 +2,13 @@ import client from "../client";
 
 export default {
     Query: {
-        getAllPosts: () => (client.post.findMany()),
+        getAllPosts: () => (client.post.findMany({
+            orderBy: [
+                {
+                    updatedAt: 'desc'
+                }
+            ]
+        })),
         getPost: (_,{ id }) => (client.post.findFirst({
             where: { id }
         })),
